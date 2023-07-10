@@ -1,17 +1,16 @@
-<a href="/partstudio">Part Studio</a>
-<a href="/assemblystudio">Assembly Studio</a>
+<ul>
+  <li><a href="/partstudio">Part Studio</a></li>
+  <li><a href="/assemblystudio">Assembly Studio</a></li>
+</ul>
 {% if user %}
-<pre>
-{{ user|tojson }}
-</pre>
-<a href="/logout">logout</a>
+  <pre>
+  {{ user|tojson }}
+  </pre>
+  <p>Document Id: {{doc_id}}</p>
+  <p>Element Id: {{ele_id}}</p>
+  <p>Workspace or Version?: {{workspaceOrVersion}}</p>
+  <p>Workspace or Version Id: {{workspaceOrVersionId}}</p>
+  <a href="/logout">logout</a>
 {% else %}
-<a href="/login">login</a>
+  <a href="/login">login</a>
 {% endif %}
-<p>Document Id: {{doc_id}}</p>
-<p>Element Id: {{ele_id}}</p>
-<p>Workspace or Version?: {{workspaceOrVersion}}</p>
-<p>Workspace or Version Id: {{workspaceOrVersionId}}</p>
-
-<a href="/set_session">Set Session</a>
-<a href="/read_session">Get Session</a>

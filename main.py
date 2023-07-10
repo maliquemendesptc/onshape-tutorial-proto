@@ -16,7 +16,8 @@ oauth.register(
   name='onshape',
   access_token_url='https://oauth.onshape.com/oauth/token',
   authorize_url='https://oauth.onshape.com/oauth/authorize',
-  fetch_token=lambda: session.get('token'),  # DON'T DO IT IN PRODUCTION
+  fetch_token=lambda: session.get(
+    'token')  # TODO: DON'T DO IT IN PRODUCTION - but it works?
 )
 
 
@@ -31,7 +32,16 @@ def homepage():
   if history_type:
     url = f'https://cad.onshape.com/api/v6/documents/d/{doc_id}/{history_type}/{history_id}/elements?withThumbnails=false'
     resp = oauth.onshape.get(url)
-    print(resp.text)
+    elements = resp.json()
+    if elements:
+      print('Elements list retrieved')
+
+  # Example post request
+  # url = f'https://cad.onshape.com/api/v6/partstudios/d/{doc_id}/{history_type}/{history_id}'
+  # body = json.dumps({'name': 'NEW PS'})
+  # headers = {'Content-Type': 'application/json'}
+  # resp = oauth.onshape.post(url, data=body, headers=headers)
+  # print(resp)
 
   return render_template('home.html',
                          user=user,
@@ -64,21 +74,6 @@ def logout():
   return redirect('/')
 
 
-@app.route('/set_session')
-def set_session():
-  session['test'] = 'foo'
-  value = session.get('test')
-  print(value)
-  return 'set session'
-
-
-@app.route('/read_session')
-def read_session():
-  value = session.get('test')
-  print(value)
-  return "attempted"
-
-
 @app.route('/partstudio')
 def get_partstudio():
   return render_template('partstudio.html')
@@ -89,6 +84,7 @@ def get_assemblystudio():
   return render_template('assemblystudio.html')
 
 
+# TODO: Update token when expired - maybe?
 # @token_update.connect_via(app)
 # def on_token_update(sender,
 #                     name,
@@ -109,8 +105,3 @@ def get_assemblystudio():
 #   item.save()
 
 app.run(host='0.0.0.0', debug=True, port=443)
-
-# https://cad.onshape.com/api/v6/documents/d/72c20672f3b938bafc1a3268/w/elements
-# https://cad.onshape.com/api/v6/documents/d/72c20672f3b938bafc1a3268/w/02b39b5783b32586f9c7bc2a/elements?withThumbnails=false
-# https://cad.onshape.com/api/v6/documents/d/72c20672f3b938bafc1a3268/w/02b39b5783b32586f9c7bc2a/elements
-# https://cad.onshape.com/api/v6/documents/d/72c20672f3b938bafc1a3268/w/02b39b5783b32586f9c7bc2a/elements?withThumbnails=false
