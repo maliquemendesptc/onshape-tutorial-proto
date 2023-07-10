@@ -1,3 +1,5 @@
+<a href="/partstudio">Part Studio</a>
+<a href="/assemblystudio">Assembly Studio</a>
 {% if user %}
 <pre>
 {{ user|tojson }}
@@ -6,6 +8,8 @@
 {% else %}
 <a href="/login">login</a>
 {% endif %}
+<p>Document Id: {{doc_id}}</p>
+<p>Element Id: {{ele_id}}</p>
 
 <a href="/set_session">Set Session</a>
 <a href="/read_session">Get Session</a>

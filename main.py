@@ -1,4 +1,4 @@
-from flask import Flask, url_for, session
+from flask import Flask, url_for, session, request
 from flask_cors import CORS
 from flask_session import Session
 from flask import render_template, redirect
@@ -11,7 +11,6 @@ Session(app)
 CORS(app, supports_credentials=True)
 
 oauth = OAuth(app)
-
 oauth.register(name='onshape',
                access_token_url='https://oauth.onshape.com/oauth/token',
                authorize_url='https://oauth.onshape.com/oauth/authorize')
@@ -20,7 +19,9 @@ oauth.register(name='onshape',
 @app.route('/')
 def homepage():
   user = session.get('user')
-  return render_template('home.html', user=user)
+  doc_id = request.args.get('documentId')
+  ele_id = request.args.get('elementId')
+  return render_template('home.html', user=user, doc_id=doc_id, ele_id=ele_id)
 
 
 @app.route('/login')
@@ -61,6 +62,16 @@ def read_session():
   return "attempted"
 
 
+@app.route('/partstudio')
+def get_partstudio():
+  return render_template('partstudio.html')
+
+
+@app.route('/assemblystudio')
+def get_assemblystudio():
+  return render_template('assemblystudio.html')
+
+
 # @token_update.connect_via(app)
 # def on_token_update(sender,
 #                     name,
@@ -80,4 +91,4 @@ def read_session():
 #   item.expires_at = token['expires_at']
 #   item.save()
 
-app.run(host='0.0.0.0', port=443)
+app.run(host='0.0.0.0', debug=True, port=443)
