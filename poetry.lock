@@ -96,6 +96,22 @@ python-versions = "*"
 cryptography = ">=3.2"
 
 [[package]]
+name = "blinker"
+version = "1.6.2"
+description = "Fast, simple object-to-object and broadcast signaling"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[[package]]
+name = "cachelib"
+version = "0.10.2"
+description = "A collection of cache libraries in the same API interface."
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[[package]]
 name = "certifi"
 version = "2022.12.7"
 description = "Python package for providing Mozilla's CA Bundle."
@@ -188,6 +204,29 @@ Werkzeug = ">=2.2.2"
 [package.extras]
 async = ["asgiref (>=3.2)"]
 dotenv = ["python-dotenv"]
+
+[[package]]
+name = "flask-cors"
+version = "4.0.0"
+description = "A Flask extension adding a decorator for CORS support"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+Flask = ">=0.9"
+
+[[package]]
+name = "flask-session"
+version = "0.5.0"
+description = "Server-side session support for Flask"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+cachelib = "*"
+flask = ">=2.2"
 
 [[package]]
 name = "frozenlist"
@@ -583,7 +622,7 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.10.0,<3.11"
-content-hash = "f6cf9f6c7ddf57b32b19e41cca67cc70084f3dde636f9f647f240d53554be0d5"
+content-hash = "2a4ff2ccb6ef6ea8ccfd9ca682d4194d54871a5416a477f5c21e7d96d3b7ed77"
 
 [metadata.files]
 aiohttp = []
@@ -593,6 +632,8 @@ argon2-cffi-bindings = []
 async-timeout = []
 attrs = []
 authlib = []
+blinker = []
+cachelib = []
 certifi = []
 cffi = []
 charset-normalizer = []
@@ -601,6 +642,8 @@ colorama = []
 cryptography = []
 debugpy = []
 flask = []
+flask-cors = []
+flask-session = []
 frozenlist = []
 idna = []
 iso8601 = []
