@@ -3,6 +3,7 @@ from flask_cors import CORS
 from flask_session import Session
 from flask import render_template, redirect
 from authlib.integrations.flask_client import OAuth
+import json
 
 app = Flask(__name__)
 app.config.from_object('config')
@@ -11,9 +12,12 @@ Session(app)
 CORS(app, supports_credentials=True)
 
 oauth = OAuth(app)
-oauth.register(name='onshape',
-               access_token_url='https://oauth.onshape.com/oauth/token',
-               authorize_url='https://oauth.onshape.com/oauth/authorize')
+oauth.register(
+  name='onshape',
+  access_token_url='https://oauth.onshape.com/oauth/token',
+  authorize_url='https://oauth.onshape.com/oauth/authorize',
+  fetch_token=lambda: session.get('token'),  # DON'T DO IT IN PRODUCTION
+)
 
 
 @app.route('/')
@@ -21,7 +25,20 @@ def homepage():
   user = session.get('user')
   doc_id = request.args.get('documentId')
   ele_id = request.args.get('elementId')
-  return render_template('home.html', user=user, doc_id=doc_id, ele_id=ele_id)
+  history_type = request.args.get('workspaceOrVersion')
+  history_id = request.args.get('workspaceOrVersionId')
+
+  if history_type:
+    url = f'https://cad.onshape.com/api/v6/documents/d/{doc_id}/{history_type}/{history_id}/elements?withThumbnails=false'
+    resp = oauth.onshape.get(url)
+    print(resp.text)
+
+  return render_template('home.html',
+                         user=user,
+                         doc_id=doc_id,
+                         ele_id=ele_id,
+                         workspaceOrVersion=history_type,
+                         workspaceOrVersionId=history_id)
 
 
 @app.route('/login')
@@ -92,3 +109,8 @@ def get_assemblystudio():
 #   item.save()
 
 app.run(host='0.0.0.0', debug=True, port=443)
+
+# https://cad.onshape.com/api/v6/documents/d/72c20672f3b938bafc1a3268/w/elements
+# https://cad.onshape.com/api/v6/documents/d/72c20672f3b938bafc1a3268/w/02b39b5783b32586f9c7bc2a/elements?withThumbnails=false
+# https://cad.onshape.com/api/v6/documents/d/72c20672f3b938bafc1a3268/w/02b39b5783b32586f9c7bc2a/elements
+# https://cad.onshape.com/api/v6/documents/d/72c20672f3b938bafc1a3268/w/02b39b5783b32586f9c7bc2a/elements?withThumbnails=false
