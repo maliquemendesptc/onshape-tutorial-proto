@@ -1,16 +1,24 @@
-<ul>
-  <li><a href="/partstudio">Part Studio</a></li>
-  <li><a href="/assemblystudio">Assembly Studio</a></li>
-</ul>
-{% if user %}
-  <pre>
-  {{ user|tojson }}
-  </pre>
-  <p>Document Id: {{doc_id}}</p>
-  <p>Element Id: {{ele_id}}</p>
-  <p>Workspace or Version?: {{workspaceOrVersion}}</p>
-  <p>Workspace or Version Id: {{workspaceOrVersionId}}</p>
-  <a href="/logout">logout</a>
-{% else %}
-  <a href="/login">login</a>
+<head>
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/partstudio.css') }}">
+  <script src="{{ url_for('static',filename='scripts/index.js') }}"></script>
+</head>
+<body>
+  <ul>
+    <li><a href="/partstudio">Part Studio</a></li>
+    <li><a href="/assemblystudio">Assembly Studio</a></li>
+  </ul>
+  {% if user %}
+    <pre>
+    {{ user|tojson }}
+    </pre>
+    <p>Document Id: {{doc_id}}</p>
+    <p>Element Id: {{ele_id}}</p>
+    <p>Workspace or Version?: {{workspaceOrVersion}}</p>
+    <p>Workspace or Version Id: {{workspaceOrVersionId}}</p>
+    <a href="/logout">logout</a>
+  {% else %}
+    <a href="/login">login</a>
 {% endif %}
+  <br/>
+  <button onclick="validate()">Server Call</button>
+</body>

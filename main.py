@@ -74,6 +74,11 @@ def logout():
   return redirect('/')
 
 
+@app.route('/validate')
+def validate():
+  return "Valid"
+
+
 @app.route('/partstudio')
 def get_partstudio():
   return render_template('partstudio.html')
