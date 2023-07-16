@@ -1,6 +1,9 @@
+// JavaScript function which can be called in the client
 function validate(){
   var result = 5;
   console.log(result);
+
+  
   var xhttp = new XMLHttpRequest();
 
   xhttp.onreadystatechange = function() {

@@ -3,6 +3,7 @@
   <script src="{{ url_for('static',filename='scripts/index.js') }}"></script>
 </head>
 <body>
+  <h1>Stack: {{stack}}</h1>
   <ul>
     <li><a href="/partstudio">Part Studio</a></li>
     <li><a href="/assemblystudio">Assembly Studio</a></li>
@@ -18,7 +19,7 @@
     <a href="/logout">logout</a>
   {% else %}
     <a href="/login">login</a>
-{% endif %}
+  {% endif %}
   <br/>
   <button onclick="validate()">Server Call</button>
 </body>

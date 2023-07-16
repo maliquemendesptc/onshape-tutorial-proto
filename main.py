@@ -4,13 +4,15 @@ from flask_session import Session
 from flask import render_template, redirect
 from authlib.integrations.flask_client import OAuth
 import json
+import os
 
+# Creates the Flask app which will have the server configuration and routes
 app = Flask(__name__)
-app.config.from_object('config')
 
+# Configures the Flask app to use cookies and authenticate to Onshape
+app.config.from_object('config')
 Session(app)
 CORS(app, supports_credentials=True)
-
 oauth = OAuth(app)
 oauth.register(
   name='onshape',
@@ -21,6 +23,7 @@ oauth.register(
 )
 
 
+# The base route for the app (https://onshape-tutorial-proto.markcheli.repl.co/)
 @app.route('/')
 def homepage():
   user = session.get('user')
@@ -36,7 +39,7 @@ def homepage():
     if elements:
       print('Elements list retrieved')
 
-  # Example post request
+  # Example post request, not in use yet
   # url = f'https://cad.onshape.com/api/v6/partstudios/d/{doc_id}/{history_type}/{history_id}'
   # body = json.dumps({'name': 'NEW PS'})
   # headers = {'Content-Type': 'application/json'}
@@ -48,15 +51,18 @@ def homepage():
                          doc_id=doc_id,
                          ele_id=ele_id,
                          workspaceOrVersion=history_type,
-                         workspaceOrVersionId=history_id)
+                         workspaceOrVersionId=history_id,
+                         stack=os.environ['STACK'])
 
 
+# Route for /login which handles the redirect to Onshape
 @app.route('/login')
 def login():
   redirect_uri = url_for('auth', _scheme="https", _external=True)
   return oauth.onshape.authorize_redirect(redirect_uri)
 
 
+# Route for /auth which handles the OAuth callback from Onshape
 @app.route('/auth')
 def auth():
   token = oauth.onshape.authorize_access_token()
@@ -67,6 +73,7 @@ def auth():
   return redirect('/')
 
 
+# Route for /logout which handles the logout of the user
 @app.route('/logout')
 def logout():
   session.pop('user', None)
@@ -74,16 +81,19 @@ def logout():
   return redirect('/')
 
 
+# Route for /validate - will be used from the client
 @app.route('/validate')
 def validate():
   return "Valid"
 
 
+# Route to load the part studio .html template
 @app.route('/partstudio')
 def get_partstudio():
   return render_template('partstudio.html')
 
 
+# Route to load the assembly studio .html template
 @app.route('/assemblystudio')
 def get_assemblystudio():
   return render_template('assemblystudio.html')
@@ -109,4 +119,5 @@ def get_assemblystudio():
 #   item.expires_at = token['expires_at']
 #   item.save()
 
+# Runs the app once its been configured
 app.run(host='0.0.0.0', debug=True, port=443)
