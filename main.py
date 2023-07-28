@@ -88,15 +88,24 @@ def validate():
 
 
 # Route to load the part studio .html template
-@app.route('/partstudio')
+@app.route('/example')
 def get_partstudio():
-  return render_template('partstudio.html')
+  return render_template('example.html')
 
 
-# Route to load the assembly studio .html template
-@app.route('/assemblystudio')
-def get_assemblystudio():
-  return render_template('assemblystudio.html')
+@app.route('/instructions')
+def instructions_page():
+  return render_template('instructions.html')
+
+
+@app.route('/resources')
+def resources_page():
+  return render_template('resources.html')
+
+
+@app.route('/start')
+def start_page():
+  return render_template('start.html')
 
 
 # TODO: Update token when expired - maybe?
