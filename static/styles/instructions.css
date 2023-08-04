@@ -1,3 +1,72 @@
-h1{
-  color: blue
+.gray {
+  color: grey;
+  }
+.green-txt{
+  color:limegreen;
+}
+.black{
+  color:black;
+}
+.font {
+    font-family: 'Open Sans';
+}
+
+.center-text{
+  text-align: center;
+  font-family: 'Open Sans';
+}
+
+
+}
+.center {
+  margin-left: auto; 
+  margin-right: auto;
+}
+
+
+meter {
+  --background: #dadada;
+  --optimum: limegreen;
+  background: var(--background);
+  display: block;
+  margin-bottom: 1em;
+   width:100%;
+  max-width:800px;
+  margin-bottom:50px
+  text-align: center;
+}
+
+. buttons {
+  background-color:gray;
+  border: none;
+  color: black;
+  width:100px;
+  height: 50px;
+  margin: 30px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-family: 'Open Sans';
+}
+
+.buttons:hover { 
+  background-color:black;
+  color:white;
+  cursor:pointer;
+}
+.space{
+margin:20px;
+margin-bottom:50px
+}
+.instruction_img{
+  width:100%;
+  max-width:800px;
+  margin-bottom:50px
+}
+.next&prev{
+  
+}
+.num_spaceing{
+  margin-bottom:10px;
 }
