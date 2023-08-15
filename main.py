@@ -95,7 +95,8 @@ def get_partstudio():
 
 @app.route('/instructions')
 def instructions_page():
-  return render_template('instructions.html')
+  instruction_title = "Assembling the Peg"
+  return render_template('instructions.html', title=instruction_title)
 
 
 @app.route('/resources')
