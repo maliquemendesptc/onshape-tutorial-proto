@@ -1,3 +1,50 @@
-h1{
-  color: blue
+.title{
+  text-align:center;
+  margin-top:15px;
+  margin-bottom:10px;
+}
+
+.green-text {
+  color: #77bb41;
+  font-family: 'Open Sans';
+}
+
+.center-text{
+  text-align: center;
+  font-family: 'Open Sans';
+}
+.center {
+  margin-left: auto; 
+  margin-right: auto;
+}
+
+.survey-button {
+  background-color:#232323; /* black */
+  border: none;
+  color: white;
+  width:100px;
+  height: 50px;
+  margin: 30px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-family: 'Open Sans';
+}
+.survey-button {border-radius: 12px;}
+
+.font {
+    font-family: 'Open Sans';
+}
+.pointer {
+  cursor: pointer;
+         }
+img {
+  width: 100%;
+  height: 100%;
+}
+
+.example{
+  width: 50%;
+  max-width: 300px;
 }
