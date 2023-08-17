@@ -98,7 +98,12 @@ def instructions_page():
   instruction_title = "Assembling the Peg"
   return render_template('instructions.html', title=instruction_title)
 
+@app.route('/instructions_nohint')
+def instructions_page_nohint():
+  instruction_title = "Assembling the Peg"
+  return render_template('instructions.html', title=instruction_title)
 
+  
 @app.route('/resources')
 def resources_page():
   return render_template('resources.html')
