@@ -4,27 +4,35 @@
 </head>
 <body>
   <div class="space">
-    <h1 class="green-txt font  center-text title" >Part Design</h1>
-    <h2 class="gray font center-text">{{ title }}</h2>
-    <div class="center-text">
-      <meter id="progress" value="1" min="0" max="13">1 out of 13</meter>
-    </div>
-    <h2 class="black"><strong>instruction:</strong></h2>
-    <h2 class="black font">Click the <em class="green-txt">sketch</em> tool on the upper left side of your screen.<img src="{{ url_for('static',filename='images/sketch.png') }}"/></h2> 
-   <div class="center-text"> <img class="instruction_img" src="{{ url_for('static',filename='images/step1.png') }}"/></div>
-    <input class="buttons center-text" type="button" onclick="alert('You design is too large – is the dimension set to 3.5 in?')" value="Hint">
-     <table class="center">
-      <tr>
-        <td>
+    <h1 class="green-txt font  center-text title" >{{title}}</h1>
+    <h2 class="gray font center-text">{{step}}</h2>
+  </div>
+  <div class="center-text">
+      <meter id="progress" value= {{meter}} min="0" max="13">1 out of 13</meter>
+  </div>
+  <h2 class="black"><strong>instruction:</strong></h2>
+  <h2 class="black font">{{instruction|safe}}</h2> 
+  <div class="center-text">
+    <img class="instruction_img" src="{{img}}"/>
+  </div>
+  <input class="buttons center-text" type="button" onclick="alert({{hint}})" value="Hint">
+  <table class="center">
+    <tr>
+      <td>
+        <a href="#"
           <button class="buttons font cell">← Previous</button>
-        </td>
-        <td>
-          <h4 class="progress-conter font green-txt  cell">1/13</h4>
-        </td>
-        <td>
+        </a>
+      </td>
+      <td>
+        <h4 class="progress-conter font green-txt  cell">{{page}}</h4>
+      </td>
+      <td>
+         <a href="#"
           <button class="buttons font cell">Next →</button>
-        </td>
+        </a>
+      </td>
       </tr>
-    </table>  
+  </table>  
   
 </body>
+

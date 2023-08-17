@@ -95,10 +95,22 @@ def get_partstudio():
 
 @app.route('/instructions')
 def instructions_page():
-  instruction_title = "Assembling the Peg"
-  return render_template('instructions.html', title=instruction_title)
-
-
+  instruction_step = "Assembling the Peg"
+  instruction_title = "Part Design"
+  meter_num = "1"
+  instructions = "Click the <em class=\"green-txt\">sketch</em> tool on the upper left side of your screen."
+  hint_txt = "'You design is too large – is the dimension set to 3.5 in?'"
+  imgorvid = "https://onshape-tutorial-proto-dev-c--onshape-rd-strategy.repl.co/static/images/step1.png"
+  page_number="1/13"
+  return render_template('instructions.html',    
+                         step=instruction_step,
+                         title=instruction_title,
+                         meter=meter_num,
+                         instruction=instructions,
+                         hint=hint_txt,
+                         img=imgorvid,
+                         page=page_number)
+  
 @app.route('/resources')
 def resources_page():
   return render_template('resources.html')
