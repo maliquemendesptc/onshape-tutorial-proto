@@ -96,14 +96,21 @@ def get_partstudio():
 @app.route('/instructions')
 def instructions_page():
   instruction_title = "Assembling the Peg"
-  return render_template('instructions.html', title=instruction_title)
+  hint = True
+  return render_template('instructions.html',
+                         title=instruction_title,
+                         hint=hint)
+
 
 @app.route('/instructions_nohint')
 def instructions_page_nohint():
   instruction_title = "Assembling the Peg"
-  return render_template('instructions.html', title=instruction_title)
+  hint = False
+  return render_template('instructions.html',
+                         title=instruction_title,
+                         hint=hint)
 
-  
+
 @app.route('/resources')
 def resources_page():
   return render_template('resources.html')
@@ -111,7 +118,16 @@ def resources_page():
 
 @app.route('/start')
 def start_page():
-  return render_template('start.html')
+  first_question = True
+  second_question = False
+  return render_template('start.html', first_question=first_question)
+
+
+@app.route('/next')
+def next_question():
+  first_question = False
+  second_question = True
+  return render_template('start.html', second_question=second_question)
 
 
 # TODO: Update token when expired - maybe?
