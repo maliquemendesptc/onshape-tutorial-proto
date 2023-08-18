@@ -15,7 +15,9 @@
   <div class="center-text">
     <img class="instruction_img" src="{{ url_for('static',filename=img) }}"/>
   </div>
+{% if hint == True %}
   <input class="buttons center-text" type="button" onclick="alert({{hint}})" value="Hint">
+{% endif%}
   <table class="center">
     <tr>
       <td>

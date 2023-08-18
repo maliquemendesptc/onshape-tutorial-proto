@@ -4,19 +4,23 @@
 </head>
 <body>
       <h1 class="green-text center-text font title">Onshape Tutorial:</h1>
-      <p class="center-text title">Getting Started</p>
+  <p class="center-text title">Getting Started</p>
+   {% if first_question == True %}
   <table class="center">
     <tr>
       <p class="center-text">Is it your first time using CAD?</p>
-      <td><button class="survey-button pointer">Yes</button></td>
-      <td><button class="survey-button pointer">No</button></td>
+      <td><a href='/instructions'><button class="survey-button pointer">Yes</button></a></td>
+      <td><a href='/next'><button class="survey-button pointer">No</button></a></td>
     </tr>
   </table>
+   {% endif%}
+  {% if second_question == True%}
   <table class="center">
      <tr>
       <p class="center-text">Have you used Onshape before?</p>
-      <td><button class="survey-button pointer">Yes</button></td>
-      <td><button class="survey-button pointer">No</button></td>
+    <td><a href='/resources'><button class="survey-button pointer">Yes</button></a></td>
+    <td><a href='/instructions_nohint'><button class="survey-button pointer">No</button></a></td>
     </tr>
   </table>
+   {% endif%}
 </body>

@@ -3,8 +3,8 @@ from flask_cors import CORS
 from flask_session import Session
 from flask import render_template, redirect
 from authlib.integrations.flask_client import OAuth
-import json
 import os
+from instructions import instructions_list
 
 # Creates the Flask app which will have the server configuration and routes
 app = Flask(__name__)
@@ -90,9 +90,18 @@ def validate():
 # Route to load the part studio .html template
 @app.route('/example')
 def get_partstudio():
-  return render_template('example.html')
+  # To use the instructions list object follow the pattern of instruction_list[X]['value being referenced'] where x is the the step that is being referenced -1 (Ex. step 1 becomes step 0).  Value being referenced is the part of the instruction you are using (Ex. instruction_step, instruction_title, etc.)
+  title = instructions_list[1]['instruction_title']
+  return render_template('example.html', title=title)
 
 
+@app.route('/instructions')
+def instructions_page():
+  instruction_title = "Assembling the Peg"
+  hint = True
+  return render_template('instructions.html',
+                         title=instruction_title,
+                         hint=hint)
 @app.route('/instructions/<int:step>')
 def instructions_page(step):
   instruction_step = "Assembling the Peg"
@@ -116,6 +125,14 @@ def instructions_page(step):
                          next_num=next_num,
                          prev_num=prev_num)
 
+@app.route('/instructions_nohint')
+def instructions_page_nohint():
+  instruction_title = "Assembling the Peg"
+  hint = False
+  return render_template('instructions.html',
+                         title=instruction_title,
+                         hint=hint)
+
 
 @app.route('/resources')
 def resources_page():
@@ -124,7 +141,16 @@ def resources_page():
 
 @app.route('/start')
 def start_page():
-  return render_template('start.html')
+  first_question = True
+  second_question = False
+  return render_template('start.html', first_question=first_question)
+
+
+@app.route('/next')
+def next_question():
+  first_question = False
+  second_question = True
+  return render_template('start.html', second_question=second_question)
 
 
 # TODO: Update token when expired - maybe?
