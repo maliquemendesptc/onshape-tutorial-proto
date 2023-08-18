@@ -95,22 +95,54 @@ def get_partstudio():
   return render_template('example.html', title=title)
 
 
-@app.route('/instructions')
-def instructions_page():
-  instruction_title = "Assembling the Peg"
+@app.route('/instructions/<int:step>')
+def instructions_page(step):
+  instruction_step = "Assembling the Peg"
+  instruction_title = "Part Design"
+  meter_num = step
+  instructions = "Click the <em class=\"green-txt\">sketch</em> tool on the upper left side of your screen."
+  hint_txt = "'You design is too large – is the dimension set to 3.5 in?'"
+  imgorvid = "images/step1.png"
+  page_number = str(step) + "/13"
+  next_num = step + 1
+  prev_num = step - 1
   hint = True
   return render_template('instructions.html',
                          title=instruction_title,
-                         hint=hint)
+                         hint=hint, 
+                         step=instruction_step,
+                         meter=meter_num,
+                         instruction=instructions,
+                         hints=hint_txt,
+                         img=imgorvid,
+                         page=page_number,
+                         next_num=next_num,
+                         prev_num=prev_num)
 
 
-@app.route('/instructions_nohint')
-def instructions_page_nohint():
-  instruction_title = "Assembling the Peg"
+@app.route('/instructions_nohint/<int:step>')
+def instructions_page_nohint(step):
+  instruction_step = "Assembling the Peg"
+  instruction_title = "Part Design"
+  meter_num = step
+  instructions = "Click the <em class=\"green-txt\">sketch</em> tool on the upper left side of your screen."
+  hint_txt = "'You design is too large – is the dimension set to 3.5 in?'"
+  imgorvid = "images/step1.png"
+  page_number = str(step) + "/13"
+  next_num = step + 1
+  prev_num = step - 1
   hint = False
   return render_template('instructions.html',
                          title=instruction_title,
-                         hint=hint)
+                         hint=hint,
+                         step=instruction_step,
+                         meter=meter_num,
+                         instruction=instructions,
+                         hints=hint_txt,
+                         img=imgorvid,
+                         page=page_number,
+                         next_num=next_num,
+                         prev_num=prev_num)
 
 
 @app.route('/resources')
