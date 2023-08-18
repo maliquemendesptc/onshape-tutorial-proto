@@ -13,13 +13,13 @@
   <h2 class="black"><strong>instruction:</strong></h2>
   <h2 class="black font">{{instruction|safe}}</h2> 
   <div class="center-text">
-    <img class="instruction_img" src="{{img}}"/>
+    <img class="instruction_img" src="{{ url_for('static',filename=img) }}"/>
   </div>
   <input class="buttons center-text" type="button" onclick="alert({{hint}})" value="Hint">
   <table class="center">
     <tr>
       <td>
-        <a href="#"
+        <a href="/instructions/{{prev_num}}"
           <button class="buttons font cell">← Previous</button>
         </a>
       </td>
@@ -27,7 +27,7 @@
         <h4 class="progress-conter font green-txt  cell">{{page}}</h4>
       </td>
       <td>
-         <a href="#"
+         <a href="/instructions/{{next_num}}"
           <button class="buttons font cell">Next →</button>
         </a>
       </td>
@@ -35,4 +35,3 @@
   </table>  
   
 </body>
-

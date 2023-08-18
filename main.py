@@ -93,24 +93,30 @@ def get_partstudio():
   return render_template('example.html')
 
 
-@app.route('/instructions')
-def instructions_page():
+@app.route('/instructions/<int:step>')
+def instructions_page(step):
   instruction_step = "Assembling the Peg"
   instruction_title = "Part Design"
-  meter_num = "1"
+  meter_num = step
   instructions = "Click the <em class=\"green-txt\">sketch</em> tool on the upper left side of your screen."
   hint_txt = "'You design is too large – is the dimension set to 3.5 in?'"
-  imgorvid = "https://onshape-tutorial-proto-dev-c--onshape-rd-strategy.repl.co/static/images/step1.png"
-  page_number="1/13"
-  return render_template('instructions.html',    
+  imgorvid = "images/step1.png"
+  page_number = str(step) + "/13"
+  next_num = step + 1
+  prev_num = step - 1
+
+  return render_template('instructions.html',
                          step=instruction_step,
                          title=instruction_title,
                          meter=meter_num,
                          instruction=instructions,
                          hint=hint_txt,
                          img=imgorvid,
-                         page=page_number)
-  
+                         page=page_number,
+                         next_num=next_num,
+                         prev_num=prev_num)
+
+
 @app.route('/resources')
 def resources_page():
   return render_template('resources.html')
