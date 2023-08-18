@@ -10,9 +10,11 @@
       <meter id="progress" value="1" min="0" max="13">1 out of 13</meter>
     </div>
     <h2 class="black"><strong>instruction:</strong></h2>
-    <h2 class="black font">Click the <em class="green-txt">sketch</em> tool on the upper left side of your screen.<img src="{{ url_for('static',filename='images/sketch.png') }}"/></h2> 
+    <h2 class="black font">Click the <em class="green-txt">sketch</em> tool on the upper left side of your screen.<img src="{{ url_for('static',filename='images/sketch.png') }}"/></h2>
    <div class="center-text"> <img class="instruction_img" src="{{ url_for('static',filename='images/step1.png') }}"/></div>
-    <input class="buttons center-text" type="button" onclick="alert('You design is too large – is the dimension set to 3.5 in?')" value="Hint">
+     {% if hint == True %}
+      <input class="buttons center-text" type="button" onclick="alert('You design is too large – is the dimension set to 3.5 in?')" value="Hint">
+     {% endif%}
      <table class="center">
       <tr>
         <td>
@@ -25,6 +27,5 @@
           <button class="buttons font cell">Next →</button>
         </td>
       </tr>
-    </table>  
-  
+    </table>
 </body>
