@@ -22,114 +22,91 @@ oauth.register(
     'token')  # TODO: DON'T DO IT IN PRODUCTION - but it works?
 )
 
+@app.route('/instructions/<int:step>')
+def instructions_page(step):
+  index = step - 1
+  instruction_step = instructions_list[index]['instruction_step']
+  instruction_title = instructions_list[index]['instruction_title']
+  meter_num = step
+  instructions = instructions_list[index]['instructions']
+  hint_txt = instructions_list[index]['hint_txt']
+  imgorvid = instructions_list[index]['imgorvid']
+  page_number = str(step) + "/" + str(len(instructions_list))
+  # To reference the total number of steps use len(instruction_list)
+  prev_button = True
+  next_button = True
+  next_num = step + 1
+  prev_num = step - 1
+  hint = True
+  if step <= 1:
+    prev_button = False
+  if step >= len(instructions_list):
+    next_button = False
 
-# The base route for the app (https://onshape-tutorial-proto.markcheli.repl.co/)
-@app.route('/')
-def homepage():
-  user = session.get('user')
-  doc_id = request.args.get('documentId')
-  ele_id = request.args.get('elementId')
-  history_type = request.args.get('workspaceOrVersion')
-  history_id = request.args.get('workspaceOrVersionId')
-
-  if history_type:
-    url = f'https://cad.onshape.com/api/v6/documents/d/{doc_id}/{history_type}/{history_id}/elements?withThumbnails=false'
-    resp = oauth.onshape.get(url)
-    elements = resp.json()
-    if elements:
-      print('Elements list retrieved')
-
-  # Example post request, not in use yet
-  # url = f'https://cad.onshape.com/api/v6/partstudios/d/{doc_id}/{history_type}/{history_id}'
-  # body = json.dumps({'name': 'NEW PS'})
-  # headers = {'Content-Type': 'application/json'}
-  # resp = oauth.onshape.post(url, data=body, headers=headers)
-  # print(resp)
-
-  return render_template('home.html',
-                         user=user,
-                         doc_id=doc_id,
-                         ele_id=ele_id,
-                         workspaceOrVersion=history_type,
-                         workspaceOrVersionId=history_id,
-                         stack=os.environ['STACK'])
-
-
-# Route for /login which handles the redirect to Onshape
-@app.route('/login')
-def login():
-  redirect_uri = url_for('auth', _scheme="https", _external=True)
-  return oauth.onshape.authorize_redirect(redirect_uri)
+  return render_template('instructions.html',
+                         title=instruction_title,
+                         hint=hint,
+                         step=instruction_step,
+                         meter=meter_num,
+                         instruction=instructions,
+                         hints=hint_txt,
+                         img=imgorvid,
+                         page=page_number,
+                         next_num=next_num,
+                         prev_num=prev_num,
+                         prev_button=prev_button,
+                         next_button=next_button)
 
 
-# Route for /auth which handles the OAuth callback from Onshape
-@app.route('/auth')
-def auth():
-  token = oauth.onshape.authorize_access_token()
-  resp = oauth.onshape.get('https://cad.onshape.com/api/users/sessioninfo')
-  user = resp.json()
-  session['user'] = user
-  session['token'] = token
-  return redirect('/')
-
-
-# Route for /logout which handles the logout of the user
-@app.route('/logout')
-def logout():
-  session.pop('user', None)
-  session.pop('token', None)
-  return redirect('/')
-
-
-# Route for /validate - will be used from the client
-@app.route('/validate')
-def validate():
-  return "Valid"
-
-
-# Route to load the part studio .html template
-@app.route('/example')
-def get_partstudio():
-  # To use the instructions list object follow the pattern of instruction_list[X]['value being referenced'] where x is the the step that is being referenced -1 (Ex. step 1 becomes step 0).  Value being referenced is the part of the instruction you are using (Ex. instruction_step, instruction_title, etc.)
-  title = instructions_list[1]['instruction_title']
-  return render_template('example.html', title=title)
-
-
-@app.route('/instructions')
-def instructions_page():
-  instruction_title = "Assembling the Peg"
-  return render_template('instructions.html', title=instruction_title)
+@app.route('/instructions_nohint/<int:step>')
+def instructions_page_nohint(step):
+  index = step - 1
+  instruction_step = instructions_list[index]['instruction_step']
+  instruction_title = instructions_list[index]['instruction_title']
+  meter_num = step
+  instructions = instructions_list[index]['instructions']
+  hint_txt = instructions_list[index]['hint_txt']
+  imgorvid = instructions_list[index]['imgorvid']
+  page_number = str(step) + "/" + str(len(instructions_list))
+  next_num = step + 1
+  prev_num = step - 1
+  prev_button = True
+  next_button = True
+  hint = False
+  if step <= 1:
+    prev_button = False
+  if step >= len(instructions_list):
+    next_button = False
+  return render_template('instructions.html',
+                         title=instruction_title,
+                         hint=hint,
+                         step=instruction_step,
+                         meter=meter_num,
+                         instruction=instructions,
+                         hints=hint_txt,
+                         img=imgorvid,
+                         page=page_number,
+                         next_num=next_num,
+                         prev_num=prev_num,
+                         prev_button=prev_button,
+                         next_button=next_button)
 
 
 @app.route('/resources')
 def resources_page():
   return render_template('resources.html')
 
-
-@app.route('/start')
+@app.route('/')
 def start_page():
-  return render_template('start.html')
+  first_question = True
+  second_question = False
+  return render_template('start.html', first_question=first_question)
 
-
-# TODO: Update token when expired - maybe?
-# @token_update.connect_via(app)
-# def on_token_update(sender,
-#                     name,
-#                     token,
-#                     refresh_token=None,
-#                     access_token=None):
-#   if refresh_token:
-#     item = OAuth2Token.find(name=name, refresh_token=refresh_token)
-#   elif access_token:
-#     item = OAuth2Token.find(name=name, access_token=access_token)
-#   else:
-#     return
-
-#   # update old token
-#   item.access_token = token['access_token']
-#   item.refresh_token = token.get('refresh_token')
-#   item.expires_at = token['expires_at']
-#   item.save()
+@app.route('/next')
+def next_question():
+  first_question = False
+  second_question = True
+  return render_template('start.html', second_question=second_question)
 
 # Runs the app once its been configured
 app.run(host='0.0.0.0', debug=True, port=443)
