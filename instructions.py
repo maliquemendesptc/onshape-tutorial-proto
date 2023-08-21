@@ -14,7 +14,7 @@ step_2 = {
   "instruction_step": "Assembling the Block",
   "instruction_title": "Part Design",
   "instructions": """
-  click “top” on the left-hand side then click top on the top right cube to change views.
+  Click “top” on the left-hand side then click top on the top right cube to change views.
   """,
   "hint_txt": "Work In Progress",
   "imgorvid": "images/step2.png"
@@ -24,7 +24,7 @@ step_3 = {
   "instruction_step": "Assembling the Block",
   "instruction_title": "Part Design ",
   "instructions": """
-   on the top left click the down arrow that is next to the rectangle and press center rectangle (or press r) 
+   On the top left click the down arrow that is next to the rectangle and press center rectangle (or press r) 
   """,
   "hint_txt": "Work In Progress",
   "imgorvid": "images/step3.png"
@@ -44,7 +44,7 @@ step_5 = {
   "instruction_step": "Assembling the Block",
   "instruction_title": "Part Design",
   "instructions": """
- click the extrude tool on the top left and then click the sketch you just made and make it 2in and click.   
+ Click the extrude tool on the top left and then click the sketch you just made and make it 2in and click.   
 the arrow on top right then clicks check.  
   """,
   "hint_txt": "Work In Progress",
@@ -55,7 +55,7 @@ step_6 = {
   "instruction_step": "Assembling the Block",
   "instruction_title": "Part Design",
   "instructions": """
-   click sketch again (be in top view) click the top of you extrude then click the circle on the top left of your screen (or press c) make a circle that has a diameter of 1in on the middle left of your rectangle.  Use diminution tool to make shore it 1in while using the diminution tool click the middle of circle and the left side of the
+   Click sketch again (be in top view) click the top of you extrude then click the circle on the top left of your screen (or press c) make a circle that has a diameter of 1in on the middle left of your rectangle.  Use diminution tool to make shore it 1in while using the diminution tool click the middle of circle and the left side of the
    rectangle and make it 1.25 click check.
   """,
   "hint_txt": "Work In Progress",
@@ -106,7 +106,7 @@ step_11 = {
   "instruction_step": "Assembling the Peg",
   "instruction_title": "Part Design",
   "instructions": """
-   Click extrude click previous sketch make it a depth 0f 0.25 lastly click merge scope and click part 2. 
+   Click extrude click previous sketch make it a depth of 0.25 lastly click merge scope and click part 2. 
   """,
   "hint_txt": "Work In Progress",
   "imgorvid": "images/step11.png"
@@ -146,7 +146,7 @@ step_15 = {
   "instruction_step": "Assembly",
   "instruction_title": "Assembly Design",
   "instructions": """
-once you’re in assembly you can go to insert there you will find the parts that you made.
+Once you’re in assembly you can go to insert there you will find the parts that you made.
   """,
   "hint_txt": "Work In Progress",
   "imgorvid": "images/step15.png"
@@ -206,7 +206,7 @@ step_21 = {
   "instruction_step": "Assembly",
   "instruction_title": "Assembly Design",
   "instructions": """
- now you can put together both parts that you made once you do that it will look like this. 
+ Now you can put together both parts that you made once you do that it will look like this. 
   """,
   "hint_txt": "Work In Progress",
   "imgorvid": "images/step21.png"
