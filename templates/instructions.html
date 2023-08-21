@@ -21,17 +21,21 @@
   <table class="center">
     <tr>
       <td>
-        <a href="/instructions/{{prev_num}}"
-          <button class="buttons font cell">← Previous</button>
-        </a>
+        {% if prev_button == True %}
+          <a href="/instructions/{{prev_num}}"
+            <button class="buttons font cell">← Previous</button>
+          </a>
+        {% endif%}
       </td>
       <td>
         <h4 class="progress-conter font green-txt  cell">{{page}}</h4>
       </td>
       <td>
+      {% if next_button == True %}
          <a href="/instructions/{{next_num}}"
           <button class="buttons font cell">Next →</button>
-        </a>
+         </a>
+      {% endif%}
       </td>
       </tr>
   </table>  
