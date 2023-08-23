@@ -33,6 +33,12 @@
 }
 .survey-button {border-radius: 12px;}
 
+.survey-button:hover { 
+  background-color:#919191;
+  color:white;
+  cursor:pointer;
+}
+
 .font {
     font-family: 'Open Sans';
 }

@@ -8,16 +8,23 @@
     <h2 class="gray font center-text">{{step}}</h2>
   </div>
   <div class="center-text">
-      <meter id="progress" value= {{meter}} min="0" max="13">1 out of 13</meter>
+      <meter id="progress" value= {{meter}} min="0" max="{{meter_max}}">1 out of 13</meter>
   </div>
   <h2 class="black"><strong>instruction:</strong></h2>
   <h2 class="black font">{{instruction|safe}}</h2> 
   <div class="center-text">
     <img class="instruction_img" src="{{ url_for('static',filename=img) }}"/>
   </div>
+  <table class="center">
+   <tr>
+    <td>
 {% if hint == True %}
-  <input class="buttons center-text" type="button" onclick="alert({{hint}})" value="Hint">
+  <input class="buttons font center-text cell hint_center" type="button" onclick="alert('{{hints}}')"value="Hint">
 {% endif%}
+   </td>
+  </tr>
+  </table>
+    
   <table class="center">
     <tr>
       <td>
@@ -25,6 +32,8 @@
           <a href="/instructions/{{prev_num}}"
             <button class="buttons font cell">← Previous</button>
           </a>
+        {% else %}
+        <div class="placeholder"></div>
         {% endif%}
       </td>
       <td>
