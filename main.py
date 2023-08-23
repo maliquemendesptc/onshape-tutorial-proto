@@ -72,6 +72,7 @@ def instructions_page_nohint(step):
   page_number = str(step) + "/" + str(len(instructions_list))
   next_num = step + 1
   prev_num = step - 1
+  meter_max= len(instructions_list)
   prev_button = True
   next_button = True
   hint = False
@@ -91,7 +92,8 @@ def instructions_page_nohint(step):
                          next_num=next_num,
                          prev_num=prev_num,
                          prev_button=prev_button,
-                         next_button=next_button)
+                         next_button=next_button,
+                         meter_max=meter_max)
 
 
 @app.route('/resources')

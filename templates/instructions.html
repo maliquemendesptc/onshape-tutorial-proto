@@ -10,10 +10,12 @@
   <div class="center-text">
       <meter id="progress" value= {{meter}} min="0" max="{{meter_max}}">1 out of 13</meter>
   </div>
-  <h2 class="black"><strong>instruction:</strong></h2>
+  <h2 class="black"><strong>Instruction:</strong></h2>
   <h2 class="black font">{{instruction|safe}}</h2> 
   <div class="center-text">
+    {% if hint == True %}
     <img class="instruction_img" src="{{ url_for('static',filename=img) }}"/>
+    {% endif %}
   </div>
   <table class="center">
    <tr>
@@ -24,12 +26,15 @@
    </td>
   </tr>
   </table>
-    
   <table class="center">
     <tr>
       <td>
         {% if prev_button == True %}
-          <a href="/instructions/{{prev_num}}"
+          {% if hint == True %}
+          <a href="/instructions/{{prev_num}}">
+          {% else %}
+          <a href="/instructions_nohint/{{prev_num}}">
+          {% endif %}
             <button class="buttons font cell">← Previous</button>
           </a>
         {% else %}
@@ -41,9 +46,15 @@
       </td>
       <td>
       {% if next_button == True %}
-         <a href="/instructions/{{next_num}}"
+        {% if hint == True %}
+         <a href="/instructions/{{next_num}}">
+         {% else %}
+         <a href="/instructions_nohint/{{next_num}}">
+         {% endif %}
           <button class="buttons font cell">Next →</button>
          </a>
+      {% else %}
+        <div class="placeholder"></div>
       {% endif%}
       </td>
       </tr>

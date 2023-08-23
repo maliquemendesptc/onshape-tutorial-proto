@@ -86,7 +86,7 @@ step_9 = {
   "instruction_step": "Assembling the Peg",
   "instruction_title": "Part Design",
   "instructions": """
-   Click extrude click new (this makes a new part which is going to be the peg)
+   Click extrude click new. (this makes a new part which is going to be the peg)
   """,
   "hint_txt": "If you don't click new part it will make everything stick together and will mess up the assembly process.",
   "imgorvid": "images/step9.png"
