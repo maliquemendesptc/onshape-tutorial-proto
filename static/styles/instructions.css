@@ -59,13 +59,13 @@ meter {
   cursor:pointer;
 }
 .space{
-margin:20px;
-margin-bottom:50px
+  margin:20px;
+  margin-bottom:15px
 }
 .instruction_img{
   width:100%;
   max-width:800px;
-  margin-bottom:50px
+  margin-bottom:15px
 }
 
 .num_spaceing{
