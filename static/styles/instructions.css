@@ -41,7 +41,7 @@ meter {
   color: black;
   width:100px;
   height: 50px;
-  margin: 30px 30px;
+  margin: 15px 15px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -57,13 +57,13 @@ meter {
   cursor:pointer;
 }
 .space{
-margin:20px;
-margin-bottom:50px
+  margin:20px;
+  margin-bottom:15px
 }
 .instruction_img{
   width:100%;
   max-width:800px;
-  margin-bottom:50px
+  margin-bottom:15px
 }
 
 .num_spaceing{
