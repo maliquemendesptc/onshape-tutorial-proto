@@ -33,6 +33,7 @@ def instructions_page(step):
   imgorvid = instructions_list[index]['imgorvid']
   page_number = str(step) + "/" + str(len(instructions_list))
   # To reference the total number of steps use len(instruction_list)
+  meter_max= len(instructions_list)
   prev_button = True
   next_button = True
   next_num = step + 1
@@ -55,7 +56,8 @@ def instructions_page(step):
                          next_num=next_num,
                          prev_num=prev_num,
                          prev_button=prev_button,
-                         next_button=next_button)
+                         next_button=next_button,
+                        meter_max=meter_max)
 
 
 @app.route('/instructions_nohint/<int:step>')

@@ -6,7 +6,7 @@ step_1 = {
   "instructions": """
     Click the sketch tool circled on the upper left side of your screen. 
   """,
-  "hint_txt": "Work In Progress",
+  "hint_txt": "You have to use sketch to  make all things in onshape.",
   "imgorvid": "images/step1.png"
 }
 step_2 = {
@@ -16,7 +16,7 @@ step_2 = {
   "instructions": """
   Click “top” on the left-hand side then click top on the top right cube to change views.
   """,
-  "hint_txt": "Work In Progress",
+  "hint_txt": "Top view will make the space look 2d which makes it easier to sketch. ",
   "imgorvid": "images/step2.png"
 }
 step_3 = {
@@ -26,7 +26,7 @@ step_3 = {
   "instructions": """
    On the top left click the down arrow that is next to the rectangle and press center rectangle (or press r) 
   """,
-  "hint_txt": "Work In Progress",
+  "hint_txt": "This step is for the block so make sure you click the rectangle.",
   "imgorvid": "images/step3.png"
 }
 step_4 = {
@@ -36,7 +36,7 @@ step_4 = {
   "instructions": """
    From middle make a 5in by 3in rectangle if it is not perfect click diminutions (or press d) and click each side and type 5 and 3 then click check 
   """,
-  "hint_txt": "Work In Progress",
+  "hint_txt": "When using the dimension tool make sure you make constraints on the length and width.",
   "imgorvid": "images/step4.png"
 }
 step_5 = {
@@ -47,7 +47,7 @@ step_5 = {
  Click the extrude tool on the top left and then click the sketch you just made and make it 2in and click.   
 the arrow on top right then clicks check.  
   """,
-  "hint_txt": "Work In Progress",
+  "hint_txt": "The extrude tool makes sketches 3d.",
   "imgorvid": "images/step5.png"
 }
 step_6 = {
@@ -58,7 +58,7 @@ step_6 = {
    Click sketch again (be in top view) click the top of you extrude then click the circle on the top left of your screen (or press c) make a circle that has a diameter of 1in on the middle left of your rectangle.  Use diminution tool to make shore it 1in while using the diminution tool click the middle of circle and the left side of the
    rectangle and make it 1.25 click check.
   """,
-  "hint_txt": "Work In Progress",
+  "hint_txt":"Make the circle diameter 1in,and make the space away from the block 1.25.",
   "imgorvid": "images/step6.png"
 }
 step_7 = {
@@ -68,7 +68,7 @@ step_7 = {
   "instructions": """
    Click extrude click previous sketch(bottom of circle)extrude 1in but click the remove option under the check and then click check. 
   """,
-  "hint_txt": "Work In Progress",
+  "hint_txt": "Clicking remove makes a hole in your block for the peg to fit.",
   "imgorvid": "images/step7.png"
 }
 step_8 = {
@@ -78,7 +78,7 @@ step_8 = {
   "instructions": """
    Click the mirror on the top bar and click the circle you just made then click the line that divides your rectangle vertically before you click check click intersect. 
   """,
-  "hint_txt": "Work In Progress",
+  "hint_txt": "If you do this correctly the hole should mirror and make it so that there 2 holes equally spaced apart.",
   "imgorvid": "images/step8.png"
 }
 step_9 = {
@@ -88,7 +88,7 @@ step_9 = {
   "instructions": """
    Click extrude click new (this makes a new part which is going to be the peg)
   """,
-  "hint_txt": "Work In Progress",
+  "hint_txt": "If you don't click new part it will make everything stick together and will mess up the assembly process.",
   "imgorvid": "images/step9.png"
 }
 step_10 = {
@@ -98,7 +98,7 @@ step_10 = {
   "instructions": """
    Make a sketch that is on you extrude that a circle with 1.5in and diameter. 
   """,
-  "hint_txt": "Work In Progress",
+  "hint_txt": "This is the top part of the peg so it should not be with part 2.",
   "imgorvid": "images/step10.png"
 }
 step_11 = {
@@ -108,7 +108,7 @@ step_11 = {
   "instructions": """
    Click extrude click previous sketch make it a depth of 0.25 lastly click merge scope and click part 2. 
   """,
-  "hint_txt": "Work In Progress",
+  "hint_txt": "make shore this and your last extrude are connected but nothing else.",
   "imgorvid": "images/step11.png"
 }
 step_12 = {
@@ -118,7 +118,7 @@ step_12 = {
   "instructions": """
    Make a sketch on the 1.5 circle and make it be 0.2 in a diameter 0.5in from the middle to the right wall.
   """,
-  "hint_txt": "Work In Progress",
+  "hint_txt": "This is the handle to the peg it it should be in inpatween the model and the edge of the circle.",
   "imgorvid": "images/step12.png"
 }
 step_13 = {
@@ -128,7 +128,7 @@ step_13 = {
   "instructions": """
   Extrude your sketch by 2.5in then click check. 
   """,
-  "hint_txt": "Work In Progress",
+  "hint_txt": "Part one should be the block with 2 holes and party two should be 1 peg width a top and small handle. ",
   "imgorvid": "images/step13.png"
 }
 step_14 = {
