@@ -54,3 +54,10 @@ img {
   width: 50%;
   max-width: 300px;
 }
+
+.home {
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  background-color: transparent;
+}

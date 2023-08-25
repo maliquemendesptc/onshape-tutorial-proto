@@ -22,7 +22,6 @@
 }
 .title-spaceing{
   margin-top:10px;
-  
 }
 
 meter {
@@ -95,4 +94,11 @@ meter {
 .placeholder{
   width:100px;
   height: 50px;
+}
+
+.home {
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  background-color: transparent;
 }
