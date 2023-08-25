@@ -64,7 +64,6 @@
          }
 img {
   width: 100%;
-  height: 100%;
 }
 
 .example{
@@ -86,3 +85,11 @@ buttons {
   margin-left: auto; 
   margin-right: auto;
   border-radius: 12px;
+}
+
+.home {
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  background-color: transparent;
+}
