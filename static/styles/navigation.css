@@ -31,6 +31,23 @@
   font-size: 16px;
   font-family: 'Open Sans';
 }
+
+.sb_spaceing{
+   background-color:#232323; /* black */
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-family: 'Open Sans';
+  border-radius: 12px;
+  }
+.sb_spaceing:hover { 
+  background-color:#919191;
+  color:white;
+  cursor:pointer;
+}
 .survey-button {border-radius: 12px;}
 
 .survey-button:hover { 
@@ -52,6 +69,22 @@ img {
 .example{
   width: 50%;
   max-width: 300px;
+}
+
+buttons {
+  background-color:#232323;
+  border: none;
+  color: white;
+  width:100px;
+  height: 50px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-family: 'Open Sans';
+  margin-left: auto; 
+  margin-right: auto;
+  border-radius: 12px;
 }
 
 .home {
